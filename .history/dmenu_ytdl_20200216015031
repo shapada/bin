@@ -1,0 +1,6 @@
+url=$(dmenu -i -l 0  -p "Enter URL")
+
+
+if [ -n "$url" ]; then
+	youtube-dl -f "bestvideo[ext!=webm]‌​+bestaudio[ext!=webm]‌​/best[ext!=webm]" -i -o /home/sd/ytdl "$URL"
+fi

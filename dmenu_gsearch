@@ -1,0 +1,12 @@
+#!/bin/bash
+cache=$HOME/.local/gsearch-history.log
+url='https://google.com/search?q='
+phrase=$(tac "$cache" dmenu -i -l 20 -p "Search")
+
+if [ -n "$phrase" ]; then
+    echo "$phrase" | tee -a $cache
+
+    xdg-open "${url}${phrase}" 2> /dev/null
+
+    exec i3-msg [class="^chromium$"] focus
+fi
